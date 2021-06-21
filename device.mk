@@ -186,6 +186,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOARD_PLATFORM := sm6150
 PRODUCT_USES_QCOM_HARDWARE := true
 
+# Recorder
+PRODUCT_PACKAGES += \
+    OPScreenRecorder
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
