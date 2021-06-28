@@ -80,6 +80,7 @@ ro.boot.realme.lockstate=0
 dev.pm.dyn_samplingrate=1
 persist.front.skipdisplay.enable=1
 debug.hwui.renderer=skiavk
+debug.cpurend.vsync=false
 
 #lmkd options
 ro.config.low_ram=false
