@@ -40,7 +40,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-X2.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-X2.xml \
     $(LOCAL_PATH)/configs/privapp-permissions-X2.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-X2.xml \
     $(LOCAL_PATH)/configs/privapp-permissions-X2.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-X2.xml
-    
+
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
@@ -74,6 +74,8 @@ PRODUCT_PACKAGES += \
 # Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat64.enabled=true
+
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed
 
 # Display
 PRODUCT_PACKAGES += \
