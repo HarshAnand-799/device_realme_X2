@@ -16,22 +16,26 @@
         android:title="@string/display_title">
 
         <SwitchPreference
+            android:icon="@drawable/ic_dc_mode_icon"
             android:key="dc"
             android:summary="@string/dc_mode_summary"
             android:title="@string/dc_mode_title" />
 
         <SwitchPreference
+            android:icon="@drawable/ic_hbm_mode_icon"
             android:key="hbm"
             android:summary="@string/hbm_mode_summary"
             android:title="@string/hbm_mode_title"
             android:defaultValue="false" />
 
         <SwitchPreference
+            android:icon="@drawable/ic_srgb_mode_icon"
             android:key="srgb"
             android:summary="@string/srgb_mode_summary"
             android:title="@string/srgb_mode_title" />
 
         <SwitchPreference
+            android:icon="@drawable/ic_game_mode_icon"
             android:key="game"
             android:summary="@string/game_mode_summary"
             android:title="@string/game_mode_title" />
@@ -59,6 +63,7 @@
         android:title="@string/misc_title">
 
         <SwitchPreference
+            android:icon="@drawable/ic_usb_otg_icon"
             android:key="otg"
             android:summary="@string/otg_mode_summary"
             android:title="@string/otg_mode_title" />
