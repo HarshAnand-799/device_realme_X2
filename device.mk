@@ -168,6 +168,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.qcom:64
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/power/powerhint.json:system/etc/powerhint.json
+
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
