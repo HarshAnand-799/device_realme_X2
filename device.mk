@@ -114,6 +114,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/pixel_2016_exclusive.xml
 
+# GoogleCamera
+PRODUCT_PACKAGES += \
+    GoogleCamera
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/GoogleCamera/privapp-permissions-googlecamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-googlecamera.xml
+
 #Hardware
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
