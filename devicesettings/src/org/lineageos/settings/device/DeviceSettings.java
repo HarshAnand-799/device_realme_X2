@@ -42,6 +42,9 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
+import android.app.ActivityManager;
+import android.content.Context;
+import org.lineageos.settings.device.FPSInfoService;
 
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -57,12 +60,14 @@ public class DeviceSettings extends PreferenceFragment
     public static final String TP_DIRECTION = "/proc/touchpanel/oppo_tp_direction";
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
+    public static final String KEY_FPS_INFO = "fps_info";
 
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mDCModeSwitch;
     private static TwoStatePreference mSRGBModeSwitch;
     private static TwoStatePreference mOTGModeSwitch;
     private static TwoStatePreference mGameModeSwitch;
+    private static SwitchPreference mFpsInfo;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -94,6 +99,17 @@ public class DeviceSettings extends PreferenceFragment
         mGameModeSwitch.setEnabled(GameModeSwitch.isSupported());
         mGameModeSwitch.setChecked(GameModeSwitch.isCurrentlyEnabled(this.getContext()));
         mGameModeSwitch.setOnPreferenceChangeListener(new GameModeSwitch());
+
+        mFpsInfo = (SwitchPreference) findPreference(KEY_FPS_INFO);
+        mFpsInfo.setChecked(isFPSOverlayRunning());
+        mFpsInfo.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+        mFpsInfo.setChecked(isFPSOverlayRunning());
     }
 
     @Override
@@ -103,7 +119,15 @@ public class DeviceSettings extends PreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return true;
+          if (preference == mFpsInfo) {
+            boolean enabled = (Boolean) newValue;
+            Intent fpsinfo = new Intent(this.getContext(), FPSInfoService.class);
+            if (enabled) {
+                this.getContext().startService(fpsinfo);
+            } else {
+                this.getContext().stopService(fpsinfo);
+            }
+        } return true;
     }
 
     @Override
@@ -116,4 +140,14 @@ public class DeviceSettings extends PreferenceFragment
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private boolean isFPSOverlayRunning() {
+        ActivityManager am = (ActivityManager) getContext().getSystemService(
+                Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service :
+                am.getRunningServices(Integer.MAX_VALUE))
+            if (FPSInfoService.class.getName().equals(service.service.getClassName()))
+                return true;
+        return false;
+   }
 }
