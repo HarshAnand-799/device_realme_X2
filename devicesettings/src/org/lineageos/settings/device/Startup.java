@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 import androidx.preference.PreferenceManager;
+import org.lineageos.settings.device.preferences.VibratorStrengthPreference;
 
 public class Startup extends BroadcastReceiver {
 
@@ -64,6 +65,7 @@ public class Startup extends BroadcastReceiver {
         if (enabled) {
             context.startService(new Intent(context, FPSInfoService.class));
        }
+       VibratorStrengthPreference.restore(context);
     }
 
     private boolean hasRestoredTunable(Context context) {

@@ -45,6 +45,7 @@ import androidx.preference.TwoStatePreference;
 import android.app.ActivityManager;
 import android.content.Context;
 import org.lineageos.settings.device.FPSInfoService;
+import org.lineageos.settings.device.preferences.VibratorStrengthPreference;
 
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -61,6 +62,7 @@ public class DeviceSettings extends PreferenceFragment
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
     public static final String KEY_FPS_INFO = "fps_info";
+    public static final String KEY_VIBSTRENGTH = "vib_strength";
 
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mDCModeSwitch;
@@ -68,6 +70,7 @@ public class DeviceSettings extends PreferenceFragment
     private static TwoStatePreference mOTGModeSwitch;
     private static TwoStatePreference mGameModeSwitch;
     private static SwitchPreference mFpsInfo;
+    private VibratorStrengthPreference mVibratorStrength;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -103,6 +106,11 @@ public class DeviceSettings extends PreferenceFragment
         mFpsInfo = (SwitchPreference) findPreference(KEY_FPS_INFO);
         mFpsInfo.setChecked(isFPSOverlayRunning());
         mFpsInfo.setOnPreferenceChangeListener(this);
+
+        mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
+        if (mVibratorStrength != null) {
+            mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
+        }
     }
 
     @Override

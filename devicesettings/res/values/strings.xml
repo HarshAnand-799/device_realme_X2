@@ -45,4 +45,8 @@
     <string name="fps_title">FPS Info</string>
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Show overlay with current frames per second</string>
+    <!-- Vibration -->
+    <string name="vibration_title">Vibration Control</string>
+    <string name="vibration_strength_title">Strength</string>
+    <string name="vibration_warning">High vibration strength may damage your vibration motor</string>
 </resources>
