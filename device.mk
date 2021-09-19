@@ -227,13 +227,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RealmeX2WifiOverlay
 
-# WiFi Display
-PRODUCT_PACKAGES += \
-    libnl
-
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.x2
