@@ -101,7 +101,7 @@ PRODUCT_COPY_FILES += \
 
 # Spark Specific perms
 PRODUCT_COPY_FILES += \
-    vendor/spark/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
+    vendor/octavi/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -206,7 +206,10 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    vendor/nxp/opensource/sn100x
+    vendor/nxp/opensource/sn100x \
+    vendor/qcom/opensource/commonsys-intf/display
+
+OCTAVI_DEVICE_MAINTAINER := Phunsuk Wangdu
 
 # Telephony
 PRODUCT_PACKAGES += \
